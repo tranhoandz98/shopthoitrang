@@ -1,0 +1,124 @@
+*{
+	box-sizing: border-box;
+}
+.err{
+	color: red!important;
+}
+body{
+	background: #E7E7E7
+}
+.search{
+	margin-top: 10px;
+	padding-top: 10px!important;
+}
+.tim{
+	margin-top: 10px;
+	padding-top: 10px
+}
+.menu {
+	background: #337AB7!important;
+	border-radius: 0;
+	border: none;
+	color: #fff;
+}
+.menu ul li a{
+	color: #fff!important;
+	padding: 10px 15px;
+}
+.menu ul li{
+	position: relative;
+}
+.menu ul li ul{
+	background: #337AB7!important;
+	position: absolute;
+	width: 180px;
+	z-index: 1500;
+	top: 50px;
+}
+.menu ul li ul li a{
+	display: none
+}
+.menu ul li:hover ul li a{
+	display: block;
+}
+.menu ul li ul li:hover a{
+	background: none
+
+}
+header .logo img{
+	width: 80px;
+}
+.danh-sach li a{
+	border-bottom: 1px solid #337AB7; 
+}
+.banner{
+	margin-bottom: 20px
+}
+.banner img{
+	max-width: 848px;
+	max-height: 439px;
+}
+/* sản phẩm nổi bật */
+.new-pro .price{
+font-weight: bold;
+font-size: 15px;
+}
+.new-pro .del-price{
+color:  #6D6D6D;
+font-size: 13px;
+}
+.new-pro img{
+	max-height: 150px!important;
+	position: relative;
+}
+.new-pro .ten-sp{
+	white-space: nowrap;
+	color:  #6D6D6D;
+	min-height: 50px;
+	max-height: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	/* width: 200px; */
+}
+.new-pro .sale{
+	position: absolute;
+   top: 5px;
+    left: 45px;
+	background: red;
+	color: #fff;
+	height: 40px;
+	width: 40px;
+	border-radius: 10px;
+	line-height: 39px;
+}
+.new-pro .thumbnail{
+	border: none;
+}
+.new-pro :hover{
+	background: #E8E8E8;
+}
+/* thông tin sản phẩm */
+.detail .pic-main{
+	width: 300px;
+
+}
+
+.detail .price{
+	color: red;
+	font-weight: bold;
+	font-size: 22px;
+}
+.dess{
+	margin-top: 20px;
+}
+img.anh-sp{
+	width: 150px;
+}
+#back-top{
+	color:  red;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+	font-size: 50px
+}
