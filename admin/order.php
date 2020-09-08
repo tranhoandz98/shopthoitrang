@@ -1,8 +1,8 @@
  <?php include 'header.php';
 $orders=mysqli_query($conn,"SELECT orders.*,users.name as 'Name' FROM orders JOIN users ON orders.id_user=users.id ");
  ?>
-<div class="container">
-	<div class="col-md-11">
+<div class="container bg-wi">
+	<div class="col-md-6">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<div class="row">

@@ -1,4 +1,4 @@
-<div id="back-top">
+<div id="back-top" class="">
 	<i class="fa fa-fw fa-arrow-circle-up"></i>
 </div>
 <script src="admin/js/jquery.min.js"></script>
@@ -9,6 +9,7 @@
 <script src="admin/js/function.js"></script>
 <script src="admin/ckeditor/ckeditor.js"></script>
 <script>
+	$('#back-top').fadeOut()
 	$(window).scroll(function() {
 		if ($(this).scrollTop()) {
 			$('#back-top').fadeIn();

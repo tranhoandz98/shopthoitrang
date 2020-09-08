@@ -1,32 +1,41 @@
-<?php include 'header.php';
-	$id_us=$user['id'];
-	$users_query=mysqli_query($conn,"SELECT * FROM users WHERE id=$id_us");
-	$users=mysqli_fetch_assoc($users_query);
-if(isset($_POST['name'])){
 
+<?php include 'header.php';?>
+<?php if (empty($user)) {?>
+<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>Mời đăng nhập để tiếp tục</strong> <a href="login.php">Đăng nhập</a>
+	</div>
+<?php }?>
+<?php
+if (!empty($user)) {
+	$id_us = $user['id'];
+	$users_query = mysqli_query($conn, "SELECT * FROM users WHERE id=$id_us");
+	$users = mysqli_fetch_assoc($users_query);
+}
+if (isset($_POST['name'])) {
 	$add_ship = $_POST['add_ship'];
-	$note =  $_POST['note'];
+	$note = $_POST['note'];
 	$id_user = $user['id'];
 	$total_price = price_total($cart);
 	$sql = "INSERT INTO orders(id_user,total_price,address_ship,note) VALUES ('$id_user','$total_price','$add_ship','$note')";
 
-	$query = mysqli_query($conn,$sql);
+	$query = mysqli_query($conn, $sql);
 	$id = mysqli_insert_id($conn);
 	foreach ($cart as $key => $value) {
 		$price = $value['price'];
 		$quantity = $value['quantity'];
-		$sql_detail = mysqli_query($conn,"INSERT INTO order_detail(id_order,id_pro,price,quantity) VALUES ('$id','$key','$price','$quantity') ");
+		$sql_detail = mysqli_query($conn, "INSERT INTO order_detail(id_order,id_pro,price,quantity) VALUES ('$id','$key','$price','$quantity') ");
 	}
-	if ($query){
-	unset($_SESSION['cart']);
-	header('location: mess.php');
-} 
-else echo "lỗi";
-	
-
+	if ($query) {
+		unset($_SESSION['cart']);
+		header('location: mess.php');
+	} else {
+		echo "lỗi";
+	}
 }
 ?>
-<?php if (!empty($user)){ ?>
+<?php if (!empty($user)) {
+	?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
@@ -91,17 +100,17 @@ else echo "lỗi";
 									</tr>
 								</thead>
 								<tbody>
-									<?php $stt=1 ?>
+									<?php $stt = 1?>
 									<?php foreach ($cart as $key => $value) {
-										?>
+		?>
 										<tr>
 											<td><?php echo $stt++ ?></td>
 											<td><img src="uploads/product/<?php echo $value['image'] ?>" alt="" style="width:50px"></td>
 											<td><?php echo $value['name'] ?></td>
 											<td><?php echo $value['quantity'] ?></td>
 											<td><?php echo number_format($value['price']) ?></td>
-											<td><?php echo number_format($value['price']*$value['quantity']) ?></td>
-										<?php } ?>
+											<td><?php echo number_format($value['price'] * $value['quantity']) ?></td>
+										<?php }?>
 									</tr>
 									<tr class="text-red text-center">
 										<td>Tổng tiền</td>
@@ -115,13 +124,8 @@ else echo "lỗi";
 			</div>
 		</div>
 	</div>
-<?php } else{ ?>
-	<div class="alert alert-danger">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		<strong>Mời đăng nhập để tiếp tục</strong> <a href="login.php">Đăng nhập</a>
-	</div>
-<?php } ?>
-<?php include 'footer.php'; ?>
+<?php }?>
+<?php include 'footer.php';?>
 <script>
 	$("#addr").click( function(){
 		if($(this).is(':checked') ){
